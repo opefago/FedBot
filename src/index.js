@@ -13,8 +13,7 @@ const googleSheet = require("./google_form")
 moment.locale('WAT')
 app = express();
 app.listen(process.env.PORT || 3000);
-//0 6 * * *
-cron.schedule("* * * * *", function(){
+cron.schedule("0 6 * * *", function(){
     celebrants = []
     console.log("Running Cron Job");
     googleSheet.parseSheet((result)=>{
