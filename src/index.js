@@ -33,13 +33,13 @@ cron.schedule("0 6 * * *", function(){
                 if(phoneNumber.indexOf('0') === 0 ){
                     phoneNumber = `234${phoneNumber.substring(1)}`
                 }
-                // sms.sendMessage(
-                //     format(messages.sms_template, [celebrant['Firstname']])
-                //     ,[phoneNumber]
-                //     )
-                // Whatsapp.sendMessage(
-                //     format(messages.whatsapp_template, [celebrant['Firstname'], celebrant['Lastname']])
-                //     )
+                sms.sendMessage(
+                    format(messages.sms_template, [celebrant['Firstname']])
+                    ,[phoneNumber]
+                    )
+                Whatsapp.sendMessage(
+                    format(messages.whatsapp_template, [celebrant['Firstname'], celebrant['Lastname']])
+                    )
             })
         }
     })
