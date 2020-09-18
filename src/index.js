@@ -1,5 +1,5 @@
-// const dotenv = require('dotenv');
-// dotenv.config();
+const dotenv = require('dotenv');
+dotenv.config();
 const cron = require("node-cron");
 const format = require("string-template")
 const express = require("express");
@@ -17,7 +17,7 @@ app.listen(process.env.PORT || 3000);
 app.get('/health', (req, res) => {
     res.send('OK!')
   })
-cron.schedule("0 6 * * *", function(){
+cron.schedule("* * * * *", function(){
     celebrants = []
     console.log("Running Cron Job");
     googleSheet.parseSheet((result)=>{

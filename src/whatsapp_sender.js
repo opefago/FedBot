@@ -9,7 +9,6 @@ module.exports.sendMessage = function(message){
     var jsonPayload = JSON.stringify({
         group_admin: process.env.WHATSAPP_ADMIN_NUMBER,
         group_name: process.env.WHATSAPP_ADMIN_NAME,
-        image: fs.readFileSync("asset/felix-mooneeram.jpg").toString('base64'),
         message: message
     });
     
