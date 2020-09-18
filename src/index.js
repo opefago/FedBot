@@ -17,7 +17,7 @@ app.listen(process.env.PORT || 3000);
 app.get('/health', (req, res) => {
     res.send('OK!')
   })
-cron.schedule("* * * * *", function(){
+cron.schedule("0 6 * * *", function(){
     celebrants = []
     console.log("Running Cron Job");
     googleSheet.parseSheet((result)=>{
@@ -33,13 +33,13 @@ cron.schedule("* * * * *", function(){
                 if(phoneNumber.indexOf('0') === 0 ){
                     phoneNumber = `234${phoneNumber.substring(1)}`
                 }
-                sms.sendMessage(
-                    format(messages.sms_template, [celebrant['Firstname']])
-                    ,[phoneNumber]
-                    )
-                Whatsapp.sendMessage(
-                    format(messages.whatsapp_template, [celebrant['Firstname'], celebrant['Lastname']])
-                    )
+                // sms.sendMessage(
+                //     format(messages.sms_template, [celebrant['Firstname']])
+                //     ,[phoneNumber]
+                //     )
+                // Whatsapp.sendMessage(
+                //     format(messages.whatsapp_template, [celebrant['Firstname'], celebrant['Lastname']])
+                //     )
             })
         }
     })
