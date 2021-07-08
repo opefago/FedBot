@@ -1,5 +1,5 @@
-// const dotenv = require('dotenv');
-// dotenv.config();
+const dotenv = require('dotenv');
+dotenv.config();
 const express = require("express");
 const moment = require('moment');
 const cronJobs = require('./bot/cron_jobs');
