@@ -1,11 +1,7 @@
-const util = require('util');
-const googleSheet = require("../helpers/google_form");
-
-// Convert parseSheet method to a promise
-const parseSheet = util.promisify(googleSheet.parseSheet);
+const googleSheet = require("../../helpers/google_form");
 
 exports.getAllData = async () => {
-  const spreadSheetData = await parseSheet();
+  const spreadSheetData = await googleSheet.parseSheet();
   return spreadSheetData.map(prepareObject);
 };
 

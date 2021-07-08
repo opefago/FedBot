@@ -30,12 +30,13 @@ const sendWishesToCelebrant = (celebrant) => {
   );
 };
 
-const sendBirthdayWishes = function () {
-  googleSheet.parseSheet((result) => {
-    const celebrants = result.filter(person => moment().format('M/DD') == person['Date Of Birth']);
-    if (celebrants.length > 0) {
-      console.log(`Found ${celebrants.length} celebrant(s)`)
-      celebrants.map(sendWishesToCelebrant);
-    }
-  });
+const sendBirthdayWishes = async () => {
+  const result = await googleSheet.parseSheet();
+  const isCelebrant = person => moment().format('M/DD') == person['Date Of Birth'];
+  const celebrants = result.filter(isCelebrant);
+
+  if (celebrants.length > 0) {
+    console.log(`Found ${celebrants.length} celebrant(s)`)
+    celebrants.map(sendWishesToCelebrant);
+  }
 };
